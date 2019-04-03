@@ -1,0 +1,41 @@
+Version1.0
+
+React
+JS library created by facebook
+Also used by netflix and Instagram
+Usesd to create JS-driven dynamic web apps
+In that regard can be compared to Angular and Vue
+
+Redux
+A layer on top of React
+Helps with State Management of our app
+	Datain in the app
+	UI state of the app
+Is the menu open or closed
+
+React basics
+Componetnts events templates props and forms
+
+React router
+Routes, route paramenters, redirects
+
+Redux
+Stores, actions and reducers
+
+Version 2.0
+React
+Components, Components, Components
+Compents for Nav bar, Search Bar and Footer
+
+Creates a js representation of the virtual dom
+Takes virtual dom renders it to the DOM,
+
+Idea heres is that when one of the component changes it renders it to the DOM very quickly because of the virtual DOM.
+React creates a new virtual DOM and compares it to the OLD virtual DOM, and knows exact what it has to update in the actual DOM.
+
+This happens every time, one of your component state changes.
+
+Components and Templates
+Components look like HTML templates (actually JSX)- JS XML
+They can contain ”state” (data or UI State)
+They can contain JS for functionality
