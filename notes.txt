@@ -39,3 +39,57 @@ Components and Templates
 Components look like HTML templates (actually JSX)- JS XML
 They can contain ”state” (data or UI State)
 They can contain JS for functionality
+
+Version 3.0
+Package can create flow of whole pack with a full pack set up
+  <!--Core react libary-->
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <!--React DOM libary- glue layer between react and the dom. Its what lets us inject our components into the DOM-->
+  
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+Need both of the 2 libaries loaded into our index dot HTML Document
+
+Packages
+ES7 React/Redux GraphQL/React-Native Snippets
+Sublime Babel
+
+Version4.0
+React components are the lifeblood of react and we use them to take control of different elements inside the navbar search bar contact form
+Need to create class based components
+Classes are a way for us to bluepring objects in JS
+
+React Object Component to inherit all the base functionality of a component into this class
+Class based components must have at least one function inside of them And that function is called render
+Render is responsible for rendering our template to w.e element we want to render to return a value inside it is going to be the JSX template and is going to go inside paratheseses 
+JSX allows us to write HTML code inside JS 
+
+Can only have one root element
+Cannot use class have to use className=
+Take the glue layer that takes our components and can render them to the DOM is by saying react.  We don’t get access to that by here
+When using ReactDOM.render() first parameter is which component we want to render to the DOM
+We have to add it as a tag like ReactDOM.render(<App />, docment.getElementById(‘app’)) 
+The second paramter is going to be where we want to render it to the DOM
+
+JSX is normally not support in browers
+Have to add type="text/babel" to <script type="text/babel"> before the dom
+It doesnt get rid of it, it just nests our component inside that div
+
+Idea of React is to actually output dynamic content
+We can output dynamic JS content  inside these curly braces
+Like take math object Math.random() * 10
+Have to always use {}
+So in
+	<script type="text/babel">
+		class App extends React.Component {
+			render() {
+				return (
+					<div className="app-content">
+					<h1> Hey, ninjas</h1>
+					<p>{Math.random() * 10}</p>
+					</div>
+				);
+			}
+		}
+		ReactDOM.render(<App />, document.getElementById('app'))
+	</script>
