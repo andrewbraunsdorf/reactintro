@@ -123,3 +123,10 @@ It is going to be dynamically so have to enclose it in { }
 This to reference the component itself, then we get access to the state property, then access the name by .name
 <p>My name is {this.state.name }</p>
 This is how we define state
+
+Version6.0 
+React Developer tools for Chrome
+Lights up red if dev or lights up blue if its in production
+Rendered App to the DOM and can see the state of the component
+Real Scenario, the user will dynamically change events based on forms
+Lets your interact when you are testing your tools
