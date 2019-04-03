@@ -93,3 +93,33 @@ So in
 		}
 		ReactDOM.render(<App />, document.getElementById('app'))
 	</script>
+
+Version5.0
+Component State
+JS Object
+Descibes the current state of the component
+Data, UI State
+The state of a component can be updated over time
+	A modal could close
+	The data we output could change
+
+Shopping Cart Component
+{
+	Items: [
+		{ name: ‘navy jumper’, price: 9.99 },
+{ name: ‘ ninja mask’, price: 19.99 },
+]
+}
+State of compoent is JS object, property name called items, an array and inside array two objects and 2 objects represent an item in shopping cart.  Storing it locally to change state so it adds a third item.  Take state to dynamically add another component.  Storying locally
+Pop up and it can either be true or false.  Storing component UI state.  
+
+Different ways to create a state of component
+First way is to just define state property within the class
+State equals JS object state = {   } which will contain some kind of data or UI state.  Add different properties inside the object
+Add name property 
+This is not really doing anything
+Output state to template
+It is going to be dynamically so have to enclose it in { }
+This to reference the component itself, then we get access to the state property, then access the name by .name
+<p>My name is {this.state.name }</p>
+This is how we define state
