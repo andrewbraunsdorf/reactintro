@@ -254,3 +254,53 @@ Index.js is where we render the application to the dom
 Deleted css file and test file, logo file
 Stripped back file to basics
 Updated file and when we save it, it automatically updates
+
+Version 12.0
+
+App.js only component being uploaded on the app.  It is the root component.
+
+There are Nesting Components
+App.js is the Root Component sits at the top of the tree, show different components nest in it. When it sits inside aonother component it nests inside of it and it nests Navbar.js and Contact Form.js
+
+At the top of the app.js file we are importing React but also the {component} aspect of it
+import React, { Component } from 'react';
+When ever we create an app based component we are going to need to add import React, { Component } from 'react';
+
+The render method returns JSX template
+
+We need to export it so we can import it into the main root folder
+Export Ninjas, then import it so it can be imported inside the component
+Add import Ninjas from './Ninjas'; in the app.js file to import the component
+Now we nest it
+We nest it as if it was an HTML element 
+<Ninjas/> self nested 
+
+Why did we need to nest a component in the first place instead of typing in everything.
+
+Idea of the components is that we are keeping code more modular and that component more modular, and that component may have its own state or method at some point which we dont want to confuse with its own.
+
+How to make it more dynamic you use props.
+
+Version13.0
+<Ninjas/>  is the child component because it is sitting inside the parent component
+Props are a way to send data from the parent component to the child component
+
+We can pass data instead of hardcoding the data
+We use props which is short for properties and we output it into the properties
+We can pass name property
+Making props and being passed into ninja components.
+We can then access them in ninjas via the class based components automatically
+Can add js inside render because it is just a js object
+
+In Ninja.js add console.log(this.props) to the render object
+In the console we can see the props.  We can output inside the templadte
+
+We can render it in the template using <div> Name: {this.props.name} </div> instead of hardcoding them.
+
+There is an easier way using destructuring
+Using properties name
+We are storing them in a const
+const {name, age, belt} = this.props; and its taking this.props.name and this.props.age and this.props.belt
+Now stored as <div> Name: { name } </div>Why did we do it we can paste it below and then output different data
+We can use it over and over again just in different places
+That is how we pass props down and how we output the props
