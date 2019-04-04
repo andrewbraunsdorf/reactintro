@@ -23,15 +23,19 @@
 				age: 30
 			}
 			// Have to call the function
-			handleClick(e) {
-				console.log(e.target);
-				// Does not work due to .this not being callable here
-				// console.log(this.state);
+			handleClick = (e) => {
+				this.setState({
+					name: "Yoshi",
+					age: 25
+				})
+				// console.log(e.target);
+				// Does not work due to .this not being callable here with handleClick (e) works with handleClick = (e) =>
+				console.log(this.state);
 			}
-			handleMouseOver(e) {
+			handleMouseOver = (e) => {
 				console.log(e.target, e.pageX, e.pageY);
 			}
-			handleCopy(e){
+			handleCopy = (e) => {
 				console.log('Try being original for once!')
 			}
 			render() {
