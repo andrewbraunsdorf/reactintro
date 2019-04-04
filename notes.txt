@@ -228,3 +228,29 @@ Under myapp, public folder is served to the browser
 Index.html is servered in there
 Package.lock locks down the file
 SRC file is where the folders you use are
+
+Version11.0
+Single Page Apps
+React apps are typically SPA’s
+Only ever one HTML page served to the browser
+React then controls what a user sees on that page
+
+There will only ever be one HTML page that is served to the browser from the server and updated based on what the user sees
+Multi-page apps- A user will go to an address like website.com/index and send a request to the server
+Server sends back html page dependent on address
+If go to /contaact it makes another request to server and server sends back response
+
+React, make initial request and it sends back html file, when it reaches browser react takes over 
+Then react intercepts that page, and it says what you want to see, and saves you a trip to the server
+Public/index.html is the standard file
+Need to get the files inside <div id="root"></div>
+
+In src/app.js is an class based component with the render method.  At the end of the file we are exporting it so it can be rendered to the DOM on src/index.js file
+
+Run file
+Npm start, you go into the folder myapp and type npm start to go to development server
+Index.js is where we render the application to the dom
+
+Deleted css file and test file, logo file
+Stripped back file to basics
+Updated file and when we save it, it automatically updates
