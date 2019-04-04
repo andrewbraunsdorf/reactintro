@@ -152,3 +152,79 @@ onCopy={} tells us when the user tries to copy the text
 It console logs the result out
 
 Inside a function cannot reference .this due to the different points in the component
+
+Version7.0
+Re-renders state whenever it is changed re-renders to out put it to the dom
+We want to add a button with onClick event but cannot just add <button onClick=””
+Because it is in html
+Wantto output dynamic JS inside the so we have to add { }
+Have to add a function just like we did render()
+To call function have to add this.handleClick because it refers to  the component which the function is stored on
+Do not want to have this.handleClick() with parenthases because it will run the function as soon as the page is run
+We only want to pass a reference instead of automatically firing it.  We want to do it when the user clicks the button
+Added handleMouseOver
+handleMouseOver(e) {
+				console.log(e.target, e.pageX, e.pageY);
+			}
+.target tells us the target element
+.pageX tells us the X coordinate on the page
+.pageY tells us the Y coordinate on the page
+
+onCopy={} tells us when the user tries to copy the text
+It console logs the result out
+
+Inside a function cannot reference .this due to the different points in the component
+render?
+
+Version8.0
+Why can we not access .this in the function when we can call it in render?
+Can get it in the templates but not the functions
+This is generally determined by how and where the function is called not by where the function sits
+The value of the this keyword inside a function is not what you’d expect, so he would probably assume that the context of the this keyword inside the react component instance would be able to access this.state
+By default when you call a function like this in reaction to a DOM event in the browser window, the keyword is lost inside the function and its set to undefined, aka undefined and an error
+
+We are able to do it in render as react automatically binds the context of this forest inside this function we dont have to do any manual work
+Inside our own custom functions of this class when we call them in reaction to DOM events the context of this is not bound and we have to do it ourselves
+
+If we set the functions to arrow functions it will now work
+handleClick = (e) => {
+			console.log(this.state);
+			}
+Arrow functions have a special behavior when it comes to this keyword.  They bind the value of this to w.e this is outside the function
+The value of this is just the component instance, so it is taking it and binding it into this in this.state
+The arrow function takes the value of this to be the component and passes it inside the function
+
+Change the state when an event happens
+We use this.setState() in here we pass what ever properties we want to update
+
+Version9.0
+onChange= {} updates every time there is a change
+
+handleChange = (e) => {
+				this.setState
+			}
+Change state when the user types in the form
+We have a property called value and that is going to get the value of w.e inside the input field every time something in the input field is set
+Change the default
+Instead of onClick you do onSubmit it also takes when a user hits enter
+Prevent default handleSubmit =(e) => {
+				e.preventDefault();
+			}
+
+Version10.0
+Create React App
+A command line tool to create React Aoo
+-development server
+-use es6 feautures which are not normally supported
+-keep our code modular
+-use build tools to create optimized code
+
+To get into React in c9 you need to use
+npm install -g create-react-app
+create-react-app my-app
+cd my-app
+npm start
+Under myapp, public folder is served to the browser 
+Index.html is servered in there
+Package.lock locks down the file
+SRC file is where the folders you use are
