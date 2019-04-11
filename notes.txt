@@ -304,3 +304,112 @@ const {name, age, belt} = this.props; and its taking this.props.name and this.pr
 Now stored as <div> Name: { name } </div>Why did we do it we can paste it below and then output different data
 We can use it over and over again just in different places
 That is how we pass props down and how we output the props
+
+Version14.0
+Nesting Ninja component only outputting one component out to the dom.
+Instead out outputting the data on the ninja we will be 
+Define data in the state then pass it to the component of Ninjas
+Added 
+  state = {
+    ninjas : [
+    { name: 'Ryu', age: 30, belt: 'black', id: 1 },
+    { name: 'Yoshi', age: 25, belt: 'green', id: 2 }, 
+    { name: 'Crystal', age: 20, belt: 'red', id: 3 }
+        ]
+  }
+Before Render
+Each array item is an object
+Pass it into component Ninjas
+We are going to receive the array as a prop in app.js, cycle through it and out put it for each individual ninja.
+Call this prop ninjas, so it now looks like this <Ninjas ninjas={this.state.ninjas}/>
+
+Passing down array of ninjas and passing it down as a prop, inside the component
+const { ninjas } = this.props is the same as const ninjas = this.props.ninjas
+
+We want to output it to the dom
+Use the js method called map
+What does the js method does in js takes the array and it maps it to a new array.  Want to map it to a new array.
+Store snippets ina new array then store array
+We want to store our new array full of HTML elements inside so we’ll set it equal to ninjas
+In .map() we take each individual in this case ninja as we cycle through it
+Return a value inside the function
+Returned value is the element which is popped into the new array
+Return some JSX code, some HTML for each individual ninja, and that will be the template from that individual
+One set of JSX for each individual ninja
+Instead of referencing name, age, and belt...we need to reference ninja.name, ninja.age, and ninja.belt
+Return JSX and storing JSX for each ninja is 
+Out put each ninja, create a div and output this array
+
+As it stands each element is getting the same key identifier.
+Need to identify the element, to determine which ninja is removed or modified
+Each element needs an identifier and we chose the id
+render(){
+		// console.log(this.props)
+		const { ninjas } = this.props;
+		const ninjaList = ninjas.map(ninja => {
+			return (
+			<div className="ninja" key={ninja.id}>
+			<div> Name: { ninja.name } </div>
+			<div> Age: { ninja.age } </div>
+			<div> Belt: { ninja.belt } </div>
+			</div>
+			);
+		});
+		return(
+			<div className="ninja-list">
+				{ ninjaList }
+			</div>
+		);
+	}	
+
+Version 15.0
+Container Vs UI Components
+
+Container Components (sometimes called class based components)
+Contain state for data and Serve as data sources
+Contain lifecycle hooks, grab data and store that in their states and then nest the other components in them, not concerned with how the application looks
+Not concerned with UI
+Use classes to create
+Serve as data sources
+
+UI Components (stateless component)
+Don’t contain state
+Receive data from props
+Only concerned with UI
+Use functions to create
+
+
+
+Root component at the top, called app.js and it would be called a container component, contains other components
+May go to a database via a lifecycle hook, grab some data ,store that on its states, inside app.js and pass that data down as a prop.
+Blue would be UI components or functional components, created by functions and not classes.  That is because they dont need their own state.  How do we output the links on a page and  ninjas.js gets its data from props passed down from the app contains a component so this here doesn’t need a state, and its just concerned with how that data is then output to the screen.
+
+Contact form.js container.  You can nest containers inside container
+A container will have its own local state to store the users input into that form.  
+We would build with a class instead of a function
+Containers have states and UI components which dont have states.
+
+This is a container component built with the class keyword
+class App extends Component {
+  state = {
+    ninjas : [
+    { name: 'Ryu', age: 30, belt: 'black', id: 1 },
+    { name: 'Yoshi', age: 25, belt: 'green', id: 2 }, 
+    { name: 'Crystal', age: 20, belt: 'red', id: 3 }
+        ]
+  }
+Ninjas.js does not have its own state.  The data it receives is from the props, in the container component
+
+Delete class in ninjas.js
+We are going to build a functional component
+
+Its undefined, cannot read ninjas, off of this.props 
+
+Do not automatically get the props passed to it like we do a class based system
+
+In class based compoenents props automatically come and are attached to the instance of the component anad reference them by saying this.props but in functional components we passed the props in as a parameter to that function and can acess them just by saying props
+
+Made it a functional component because we dont need the state in it anymore
+We could no longer access a state in ninjas.js.
+
+We could use destructuring to get ninjas off the props const { ninjas } = props;

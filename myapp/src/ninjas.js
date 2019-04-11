@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Ninjas = (props) => {
-	// console.log(this.props)
-	const { ninjas } = props;
+const Ninjas = ({ninjas}) => {
+	// no longer needed because you are destructuring inside the the above function
+	// const { ninjas } = props;
 	const ninjaList = ninjas.map(ninja => {
 		return (
 			<div className="ninja" key={ninja.id}>
