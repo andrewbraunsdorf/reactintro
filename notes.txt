@@ -413,3 +413,21 @@ Made it a functional component because we dont need the state in it anymore
 We could no longer access a state in ninjas.js.
 
 We could use destructuring to get ninjas off the props const { ninjas } = props;
+
+Version16.0
+Output something conditionally
+Show under certain conditions, show only if 5 items or more are added to the shopping basket
+Only output ninja if their age is greater than 20
+Can use if statement
+Mapping through ninjas, we want it to return only ninjas > 20
+The other way to display something is by using the ternary operator in JS
+Ternary operator works in JS is there is a condition which is going to evaluate if it is true or false.
+Place ? after it
+ We have 2 return values  which returns if it is true, and a second return value if that is false.
+Need to return out the information
+
+Some people put it in the below code while others return it 
+
+Works like this 
+
+Running through the code either returning JSX or we aren’t
