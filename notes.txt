@@ -431,3 +431,81 @@ Some people put it in the below code while others return it
 Works like this 
 
 Running through the code either returning JSX or we aren’t
+
+Version17.0
+Forms- ultimate to add new items to list
+Take data and push it to array in state
+This prop <Ninjas ninjas={this.state.ninjas}/>
+Will update in ninjas.js
+Rerender the data
+	// 		return (
+	// 			<div className="ninja" key={ninja.id}>
+	// 		<div> Name: { ninja.name } </div>
+	// 		<div> Age: { ninja.age } </div>
+	// 		<div> Belt: { ninja.belt } </div>
+	// 		</div>
+Add that ninja to the list
+
+Create new form to store the data locally on that component state
+Do not need an action on the form
+Cant just use for, have to use <label htmlFor='name'>, it is JSX’s way of doing it.
+Create a function that changes the state every time it fires
+When you type name, changes the name on the fly
+Can create one function to handle the changes for name, age, and belt
+How to differentiate for name, age, and belt
+Added an id for each of them
+Field we need to update [e.target.id]: 
+Then we need the value to update it too
+Then we just call the function every time we update it
+Pass function from one component to another as a prop
+
+Version18.0
+Pass function down as a prop into this component
+Can call that function in another component
+
+This is a prop passed down addNinja= {this.addNinja}
+
+We can add in a state because it returns in object
+
+Adding it from the childing using 
+	handleSubmit = (e) => {
+		e.preventDefault();
+		this.props.addNinja(this.state);
+	}
+Inside react, the push method would alter the array, adding to arry, and that is bad practice, do not want to alter the state outside of set state
+
+Better practice would be to create a copy of the state,so you arent editing it and then add that array, and then sent it as the new state
+Then you are only changing state inside set state
+Use spread operator
+let ninjas = [...this.state.ninjas]
+Spread operator … is taking this array right here this.state.ninjas and spreading it out and adding it into new array.
+Ninjas is now the same as the old ninjas
+
+let ninjas = [...this.state.ninjas, ninja] when we add the , ninja we are adding ninjas from (ninja) in the function
+addNinja = (ninja) => {
+    ninja.id = Math.random();
+    let ninjas = [...this.state.ninjas, ninja]
+
+Version19.0
+Deleting data from the list
+Output template, be able to add button that fires function which deletes the user
+When you add parentheses to a function you are automatically invoking it.
+You can get around it by adding an anonymous function around it
+Its going to filter out itesm for us to see whether this id is equal to the ninja id in here
+Filter is non destructive its never going to alter this, only going to add a new array
+If array is true its going to let it stay, if it is false it is going to filter it out of the new array
+
+ deleteNinja = (id) => {
+    let ninjas = this.state.ninjas.filter(ninja => {
+      return 
+    });
+Need to check if this id is equal to the ninja id
+
+Version20.0
+Virtual Dom-
+App.js is container component, which we define the state, of the component
+Array of ninjas is passed down as a prop into ninjas.js UI component
+Job of ui component is to cycle through the ninjas as a prop and output them to the dom, with some template for each individual ninja
+addNinja.js we fire the form and the function is passed down to this component as a prop from app.js, passes back to app.js and the ninjas prop update which travels back to the UI component
+Re-render the template based on the new data.passed down function delete ninja from this component to this component, pass the id of the ninja we want to delete, we filter through the array of states and deletes that ninja via the ninja
+How is everything being re-rendered and that is from the virtual dom, via the new props, which updates jsx template.  Every update update makes a new virtual dom, and the current virtual dom is the same as the DOM, virtual dom compares itself to the current virtual dom, but only the changes are re-rendered on the dom. Then new virtual dom becomes current virtual dom.
