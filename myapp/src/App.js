@@ -23,10 +23,18 @@ class App extends Component {
     });
     this.setState({
       ninjas: ninjas
-    })
+    });
+  }
+  //fires when component first renders to the dom
+  componentDidMount(){
+    console.log('component mounted');
+  }
+  //only fires when we get a change of states or props
+  componentDidUpdate(prevProps, prevState){
+    console.log('component updated');
+    console.log(prevProps, prevState);
   }
   render() {
-
     return (
       <div className="App">-
           <h1>My first react app!</h1>
