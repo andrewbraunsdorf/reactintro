@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Todos from './Todos'
+import Todos from './Todos';
 
 class App extends Component {
 	state ={
@@ -10,8 +10,14 @@ class App extends Component {
 	}
 	
 	deleteTodo = (id) => {
-		console.log(id);
+		const todos= this.state.todos.filter(todo => {
+			return todo.id !== id;
+		});
+		this.setState({
+			todos: todos
+			});
 	}
+	
 	render() {
 		return (
 			<div className="todo-app container">
