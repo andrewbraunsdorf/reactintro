@@ -509,3 +509,11 @@ Job of ui component is to cycle through the ninjas as a prop and output them to 
 addNinja.js we fire the form and the function is passed down to this component as a prop from app.js, passes back to app.js and the ninjas prop update which travels back to the UI component
 Re-render the template based on the new data.passed down function delete ninja from this component to this component, pass the id of the ninja we want to delete, we filter through the array of states and deletes that ninja via the ninja
 How is everything being re-rendered and that is from the virtual dom, via the new props, which updates jsx template.  Every update update makes a new virtual dom, and the current virtual dom is the same as the DOM, virtual dom compares itself to the current virtual dom, but only the changes are re-rendered on the dom. Then new virtual dom becomes current virtual dom.
+
+Version21.0
+Css in react
+Can create css file for each file
+
+Importing for current directory ‘./filename’ for current directory
+
+Automatically adds vender prefixes to the files
