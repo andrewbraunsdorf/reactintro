@@ -12,6 +12,7 @@ class App extends Component {
 		return (
 			<div className="App">
 				<h1 className="center blue-text">Todos</h1>	
+				<Todos todos={this.state.todos}/>
 			</div>
 		);
 	}
