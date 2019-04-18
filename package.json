@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/andrewbraunsdorf/reactintro/issues"
   },
-  "homepage": "https://github.com/andrewbraunsdorf/reactintro#readme"
+  "homepage": "https://github.com/andrewbraunsdorf/reactintro#readme",
+  "dependencies": {
+    "react-router-dom": "^5.0.0"
+  }
 }
