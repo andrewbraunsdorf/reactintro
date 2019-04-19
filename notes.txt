@@ -517,3 +517,282 @@ Can create css file for each file
 Importing for current directory ‘./filename’ for current directory
 
 Automatically adds vender prefixes to the files
+Version 22
+http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+Component life cycle
+
+Mounting first created, constructor sets the state. Then get derived state from props, updates internal states, triggers on first rendered and triggers on new props, compares to new state received
+Render, compares to render on the dom, returns some form of JSX, component did mount is where the data is updated
+Compares old props with new props, computes false and only return true if it is going to be rerendered,
+Render- renders templates to dom, we get read access to the dom
+Sometimes use componentDidMount and sometime use componentDidUpdate
+
+ fires when component first renders to the dom
+  componentDidMount(){
+
+Component is only mounted once
+
+ //only fires when we get a change of states or props
+  componentDidUpdate(prevProps, prevState){
+    console.log('component updated');
+    console.log(prevProps, prevState);
+  }
+
+
+Lifecycle hooks in action when you change delete or add
+
+Version 23
+Root component is App2.js
+It’s going to be where we stores the state of our application we are going to create
+Div is where we want to render our todos
+Registered state in App2.js and pass those down into todos.js
+Pass props from app2 to todos.js 
+
+Pass props from todos.js to app.js 
+<Todos todos={this.state.todos}/>
+
+This.state.todos passes array down into the component
+
+Using deconstruction in 
+const Todos = ({todos}) => { so you can grab the todos down below
+
+Map through list a nd return jsx.
+
+const todoList = todos.length 
+todos would be the props
+
+Need a ternary operator to check if its true or false
+
+When you use map function, react expects each item to have its own unique id
+So you use key={todo.id}>
+map( todo => {
+
+Hook up event to delete todos
+
+Need delete function in app.js because it has to interact with the state
+	state ={
+		todos:[
+			{id:1, content: 'buy some milk'},
+			{id:2, content: 'play mario kart'},
+			]
+	}
+
+
+Have to add it in todos so we can grab it from the props object
+const Todos = ({todos, deleteTodo}) => {
+Add click event to span
+<span onClick={deleteTodo(id)}>{todo.content}</span>
+Have to add an anonymous function because otherwise it automatically fires
+Filter function is none destructive, it returns a new array
+
+Function as a parameter so we can fire something on each to do and we want to return either true or false,
+True if we want to keep the item in the array
+False if we want to remove
+
+Say return todo.id !==
+Todo.id is not equal to id
+If they are not equal we do not want to filter them out.  If they are euqal we want them to remove
+
+Version24.0
+Need state so should be a class based component
+NEed to add a prop so add a function 
+	addTodo = (todo) => {
+		
+	}
+Then pass addTodo as a prop in return via <AddTodo addTodo={this.addTodo}/>
+
+When we say let todos = [...this.state.todos, todo]
+
+We are taking the todos in the above state and add the new todo to the list
+
+	state ={
+		todos:[
+			{id:1, content: 'buy some milk'},
+			{id:2, content: 'play mario kart'},
+			]
+	}
+
+Do delete the text on submit we add this. setState and incorporate content: '' and then add value={this.state.content} in <input type='text' onChange={this.handleChange} value={this.state.content}/>
+
+	handleSubmit = (e) => {
+		e.preventDefault();
+		this.props.addTodo
+		this.setState({
+			content: ''
+		})
+	}
+Version25.0
+Normal html have multiple pages
+App.js is the root component but adds a component
+When you click for another page, react intercepts, then stops components from going to server, it just serves the 
+Installed React router dom
+npm install react-router-dom
+
+React router dom allows the router
+Import { BrowserRouter } from 'react-router-dom'; in main page
+
+Set up browser router so inside can use routes
+<BrowserRouter>
+				<div className="App">
+					<Navbar />
+					<Route path='/' component={Home} />
+				</div>
+			</BrowserRouter>
+
+When this is set up exactly, it doesnt pull all directories with the /
+<Route exact path='/' component={Home} />
+
+Version26.0
+How do we stop requesting the page over and over again
+Instead of using A tags in Navbar.js we will use link or a navlink from react
+Imported 
+import { link, Navlink } from 'react-router-dom'; to Navbar.js
+
+Changed tags to Link to= tags from a href= tags
+This allows the page to load with react and it loads with a href tags anyways
+<li><Link to= '/'>Home</Link></li>
+					<li><Link to= '/about'>About</Link></li>
+					<li><Link to= '/contact'>Contact</Link></li>
+From a href= 
+When we changed to Link tag we did not reload the page
+
+Difference between Link and NavLink, is that NavLink sets the html tag to class=”active” which helps when styling a webpage but Link does not
+
+Version27.0 
+Programmatic Redirects
+How to programmatic direct a user to another url
+
+If we add props to … we automatically added router info and that is because this is one of the component the router does load up
+const Contact = (props) => {
+
+Router attaches more info to the props object
+In the props router info there is Match location and history.  In history it keeps track of history
+If we push a route to that history, then its going to add another location to the history and push us to the location
+
+This passed props as through and it came a router.  Then it allows us to get the history, and in the push section we can add a different url and then after 2 secs it brings us to the about page
+const Contact = (props) => {
+	setTimeout(() => {
+		props.history.push('/about');
+	}, 2000);
+
+Use a higher order component wraps another component and gives it extra powers
+Have to import higher order component
+Import withRouter  also export it but have ro wrap the component
+export default withRouter(Navbar) ;
+import { Link, NavLink, withRouter } from 'react-router-dom';
+
+Version28.0
+higher order components wrap other components and give them superpowers or extra features
+Navbar which is component give to higher order component and becomes supercharged
+withRouter gives adds props which has information about the component in the function
+
+… is the spread operator
+
+Created higher order component that gives a random
+
+Created function aka rainbow, taking WrappedComponent which is going to wrap another component and make it supercharrged
+Colors has list, randomcolor takes a color, classname creates a classname for the div tag which changes the color
+Then react takes the className as a prop, and it is wrapped around wrapped component
+
+There will be an extra div around the text you are trying to wrap.
+
+You have to wrap the tags in about
+export default Rainbow(About);
+
+It will also pass the props from the operator using the spread operator {...props}
+
+import React from 'react';
+
+const Rainbow = (WrappedComponent) => {
+	
+	const colors = ['red', 'pink', 'orange', 'blue', 'green', 'yellow'];
+	const randomColor = colors[Math.floor(Math.random() * 5)];
+	const className = randomColor + '-text';
+	
+	return (props) => {
+		return (
+			<div className={className}>
+				<WrappedComponent {...props}/>
+			</div>
+			);
+	};
+	
+};
+
+export default Rainbow;
+
+Version29.0
+Show data to users via API
+
+Install axios
+npm install axios
+
+To use a lifestyle hook we have to convert this component to a class based component
+
+Functional components cannot use lifecycle hooks
+
+Axios is a promise and we do not know when it will finish so you use the .then function
+
+We want to put posts as an empty array.  Then in axios, we want the response, so we are going to set the state and return the first 10 data starting from position 0
+
+		posts: [ ]
+	}
+	componentDidMount(){
+		axios.get('https://jsonplaceholder.typicode.com/posts')
+		.then(res => {
+			console.log(res);
+			this.setState({
+				posts: res.data.slice(0, 10)
+			});
+		});
+	}
+
+When we set const { posts } = this.state; in the render method it is grabbing the posts property from the state.
+const { posts } = this.state;
+
+Only want to cycle through the data whne there is something in the post
+
+Home.js looks like
+import React, { Component } from 'react';
+import axios from 'axios';
+
+
+class Home extends Component {
+	state = {
+		posts: [ ]
+	}
+	componentDidMount(){
+		axios.get('https://jsonplaceholder.typicode.com/posts')
+		.then(res => {
+			console.log(res);
+			this.setState({
+				posts: res.data.slice(0, 10)
+			});
+		});
+	}
+	render() {
+		const { posts } = this.state;
+		const postList = posts.length ? (
+				posts.map(post => {
+					return (
+							<div className='post card' key={post.id}>
+								<div className='card-content'> 
+									<span className='card-title'>{post.title} </span>
+									<p>{post.body}</p>
+								</div>
+							</div>
+						);
+				})
+			) : (
+			<div className='center'>No Posts Yet</div>
+			);
+		return (
+		<div className='container'>
+		<h4 className='center'>Home</h4>
+		{postList}
+		</div>
+		);
+	}
+}
+
+export default Home;
