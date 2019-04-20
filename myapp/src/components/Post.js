@@ -11,17 +11,27 @@ class Post extends	Component {
 		.then(res => {
 			this.setState({
 				post: res.data
-			});
-			console.log(res);
+			})
+			
 		});
 		this.setState({
 			id: id
 		});
 	}
 	render() {
+		
+		const post = this.state.post ? (
+			<div className='post'>
+				<h4 className='center'>{this.state.post.title} </h4>
+				<p>{this.state.post.body} </p>
+			</div>
+			) : ( 
+			<div className='center'>Loading Post ... </div>
+			)
+		
 		return (
 				<div className='container'>
-					<h4></h4>
+					{ post }
 				</div>
 			);
 	}
