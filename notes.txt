@@ -826,3 +826,58 @@ Version31.0
 Grabs url and displays it on page.
 Want to take urls and display that information
 Surround links and then set an id for each individual post
+
+Version 32.0
+We are returning all the lore ipsum in the urls but do not need it on some page s so we want to exclude it
+Every route has the exact path=’/’ but it is interpreting the 
+<Route path='/:post_id' component={Post} />
+Route as a / path
+<Route exact path='/' component={Home} />
+
+Added posts to 
+<Link to={'/posts/' + post.id}> in Home.js and 
+<Route path='/posts/:post_id' component={Post} /> in app.js
+
+If we want to do it another way we add Switch in app.js
+{ BrowserRouter, Route, Switch } fromreact-router-dom
+We then surround the routes with the Switch router tag
+Switch only wants one tag to run at a time. It does not want multiple routes running at a time.
+
+Version33.0
+
+Importing image, to use an image inside a component we have to import that image
+
+Added image to each tag at the beginning using img src={Pokeball} alt='A pokeball'/>
+
+
+return (
+							<div className='post card' key={post.id}>
+							<img src={Pokeball} alt='A pokeball'/>
+								<div className='card-content'> 
+								<Link to={'/' + post.id}>
+									<span className='card-title red-text'>{post.title} </span>
+									</Link>
+									<p>{post.body}</p>
+								</div>
+							</div>
+						);
+
+Version34.0
+Intro to Redux
+Central data store for all app data
+Any component can access data from it
+Makes state mgmt easy
+Latest blog show comments and blog
+But in the homepage and sidebar you need the latest data, can theoretically store it in a state and pass it down as props.
+
+Redux is a central data store
+All info shared between components, it can be shared and then passed through to the central store
+Can change the data through sidebar and passed to the blog.
+It can’t directly edit it
+There is a process in redux
+Define a central store where it is stored
+
+
+Process that is predictable. 
+Decide change then dispatch action, which describes change we will make and data of change
+Then passed to the reducer, and reducer looks at the data, and sends to central data store
