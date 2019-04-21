@@ -821,3 +821,8 @@ When we looked at the reactor router we received all the extra info attached to 
 We automatically get props in class based components
 When this component is being used as a route, we get the extra info attached
 Inside the route param we can identify what the route parameter is, then we know what kind of props to go grab
+
+Version31.0
+Grabs url and displays it on page.
+Want to take urls and display that information
+Surround links and then set an id for each individual post
