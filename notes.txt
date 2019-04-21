@@ -796,3 +796,28 @@ class Home extends Component {
 }
 
 export default Home;
+
+Version30.0
+Route Parameters
+-Part of a url that can change
+-usually see them on urls for individual records
+User profile route:
+mysite.com/users/yoshi2k1
+mysite.com/users/mariotheman
+
+Cooking recipe page:
+mycookingsite.com/recipes/12345
+mycookingsite.com/recipes/98765
+
+Changing parts are route parameters
+Define route parameter through a colon and a name
+<Route path='/:post_id' component={} />
+We are expecting a url with a parameter called post id
+
+In Post we want to identify what the route parameter is
+
+When we looked at the reactor router we received all the extra info attached to the props object about our route.  We can grab that by saying this.props.match.params and the name of the route parameter we called it post_id
+
+We automatically get props in class based components
+When this component is being used as a route, we get the extra info attached
+Inside the route param we can identify what the route parameter is, then we know what kind of props to go grab
