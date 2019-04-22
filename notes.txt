@@ -881,3 +881,13 @@ Define a central store where it is stored
 Process that is predictable. 
 Decide change then dispatch action, which describes change we will make and data of change
 Then passed to the reducer, and reducer looks at the data, and sends to central data store
+
+Version35.0 
+Only reducer can change data in central data storage.Actions are handed to the reducer.
+Pass a reducer into the store
+
+Inside the function is where the do the interacting with the actual store
+We take the state and we take the action
+It begins with for the store and then it first starts, it passes that initial state into the store via the reducer
+A reducer is just a function that interacts with the store
+In function we take the state and the action
