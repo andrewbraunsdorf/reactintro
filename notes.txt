@@ -891,3 +891,15 @@ We take the state and we take the action
 It begins with for the store and then it first starts, it passes that initial state into the store via the reducer
 A reducer is just a function that interacts with the store
 In function we take the state and the action
+
+Version 36.0 
+Redux Actions
+If we want to edit the data in the store, we dont edit it directly, we go through a process, dispatch an anction into the reducer so it takes an action, look at it and change the state on the store based on the action.
+
+We update through the state.
+Action is a js object and has a type property and that describes the action, has an optional payload of data.
+
+const todoAction = { type: 'ADD_TODO', todo}
+Todo is an optional load of data
+
+Need to dispatch action, then send that (todoAction) into the reducer, which means the function will run and we have access to the action and we can do something with it in the function
