@@ -903,3 +903,41 @@ const todoAction = { type: 'ADD_TODO', todo}
 Todo is an optional load of data
 
 Need to dispatch action, then send that (todoAction) into the reducer, which means the function will run and we have access to the action and we can do something with it in the function
+
+const { createStore } = Redux;
+
+const initState = {
+  todos: [],
+  posts: []
+};
+
+function myreducer(state = initState, action){
+  if (action.type == 'ADD_TODO'){
+  	return {
+  		...state,
+  		todos: [...state.todos, action.todo]
+  	};
+  }
+  
+    if (action.type == 'ADD_POST'){
+  	return {
+  		...state,
+  		posts: [...state.posts, action.post]
+  	};
+  }
+}
+
+const store = createStore(myreducer);
+
+store.subscribe(() => {
+	console.log('state updated');
+	console.log(store.getStated());
+});
+
+// const todoAction = { type: 'ADD_TODO', todo: 'buy milk'};
+
+// store.dispatch(todoAction);
+
+store.dispatch({type: 'ADD_TODO', todo: 'buy milk'});
+store.dispatch({type: 'ADD_TODO', todo: 'sleep some more'});
+store.dispatch({type: 'ADD_POST', post: 'Egg hunt with Yoshi'});
