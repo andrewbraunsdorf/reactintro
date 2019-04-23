@@ -15,6 +15,11 @@ function myreducer(state = initState, action){
 
 const store = createStore(myreducer);
 
+store.subscribe(() => {
+	console.log('state updated');
+	console.log(store.getStated());
+});
+
 const todoAction = { type: 'ADD_TODO', todo: 'buy milk'};
 
 store.dispatch(todoAction);
